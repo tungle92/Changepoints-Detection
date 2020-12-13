@@ -1,4 +1,4 @@
-cost <- function(x, m){
+cost <- function(x){
   return(sum((x-mean(x))^2))
 }
 
@@ -11,7 +11,7 @@ optimal_partitioning <- function(x, beta = 0.1){
     min = Inf
     point = NULL
     for (j in 1:(i-1)){
-      Fcompare[j] = F_cost[j] + cost(x[j:(i-1)],m) + beta
+      Fcompare[j] = F_cost[j] + cost(x[j:(i-1)]) + beta
       if (Fcompare[j] <= min) {
         min = Fcompare[j]
         point = j-1 
@@ -40,7 +40,7 @@ PELT <- function(x, beta = 0.1){
     min = Inf
     point = NULL
     for (j in R){
-      Fcompare[j+1] = F_cost[j+1] + cost(x[(j+1):(i-1)],m)
+      Fcompare[j+1] = F_cost[j+1] + cost(x[(j+1):(i-1)])
       if ((Fcompare[j+1] + beta) <= min) {
         min = Fcompare[j+1] + beta
         point = j
