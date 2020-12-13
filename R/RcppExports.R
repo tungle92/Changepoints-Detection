@@ -5,3 +5,7 @@ cost_rcpp <- function(x) {
     .Call(`_Algo_cost_rcpp`, x)
 }
 
+optimal_partitioning_rcpp <- function(x, beta) {
+    .Call(`_Algo_optimal_partitioning_rcpp`, x, beta)
+}
+
