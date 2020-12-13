@@ -72,7 +72,7 @@ graph_cp(x, cps)
 graph_cp(x, cps1)
 ```
  
-We found this graphs when OP and PELT are exécute on x and beta values 
+We found this graphs when OP and PELT are exécute on `x` and `beta` values 
 
 ![](README_files/Firsexample.PNG)
 
