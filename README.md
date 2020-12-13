@@ -20,7 +20,11 @@
 As increasingly longer data sets are being collected, more and more applications require the detection of changes in the distributional properties of such data.
 Typically the time series in finance, will contain several changepoints.
 There is therefore a growing need to be able to search for such changes efficiently. It
-is this search problem which we consider in this project 
+is this search problem which we consider in this project.
+
+Details on the Ruptures detection can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Fichier:Detection_moyenne). This gif provides a graphical representation of its mechanisms.
+
+![](Heap_sort_example.gif)
 
 # Package installation
 You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
