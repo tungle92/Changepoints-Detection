@@ -11,6 +11,8 @@
 
 > [The 2 algorithms](#com)
 
+> [Package installation](#pac)
+
 > [Time complexity Comparaison](#time)
 
 <a id="qs"></a>
@@ -24,7 +26,10 @@ is this search problem which we consider in this project.
 
 Details on the Ruptures detection can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Détection_de_ruptures). This image provides a graphical representation of its mechanisms.
 ## Exemple de signal ayant des changements dans la moyenne.
+
 ![](README_files/D_moyenne.PNG)
+
+<a id="pac"></a>
 
 # Package installation
 You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
