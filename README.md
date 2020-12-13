@@ -56,6 +56,7 @@ We've implemeted 2 algorithms:
 
 -   `OP`
 -   `PELT`
+
 They all have two arguments: the initial seris vector data `x` and `beta`.
 
 ```{r}
