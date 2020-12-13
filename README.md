@@ -56,7 +56,7 @@ We've implemeted 2 algorithms:
 
 -   `OP`
 -   `PELT`
-They all have two arguments: the unsorted vector `x` and 'beta.
+They all have two arguments: the initial seris vector data `x` and `beta`.
 
 ```{r}
 graph_cp <- function(x, cps){
