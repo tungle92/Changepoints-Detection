@@ -74,7 +74,7 @@ graph_cp(x, cps1)
  
 We found this graphs when OP and PELT are exécute on x and beta values 
 
-![](README_files/Firsexample.png)
+![](README_files/Firsexample.PNG)
 
 ## I
 
@@ -115,7 +115,7 @@ for(i in vector_n)
 res <- rowMeans(res_cp[,-1])
 plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in seconds")
 ```
-![](README_files/graph1.png)
+![](README_files/graph1.PNG)
 
 
 ## III
@@ -137,4 +137,4 @@ res <- rowMeans(res_cp[,-1])
 plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in seconds")
 ```
 
-![](README_files/graph1.png)
+![](README_files/graph1.PNG)
