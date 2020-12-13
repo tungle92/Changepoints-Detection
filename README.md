@@ -115,7 +115,7 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 ```
 
 
-##III
+## III
 ```{r}
 nbSimus <- 10
 vector_n <- seq(from = 50, to = 500, length.out = nbSimus)
