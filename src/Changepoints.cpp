@@ -14,6 +14,7 @@ double cost_rcpp(NumericVector x){
 }
 
 
+
 // [[Rcpp::export]]
 IntegerVector optimal_partitioning_rcpp(NumericVector x, double beta){
   int n = x.size();
