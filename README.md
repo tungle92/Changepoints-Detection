@@ -15,13 +15,6 @@
 
 <a id="qs"></a>
 
-# Package installation
-You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
-
-devtools::install_github("tungle92/Project_Algorithms")
-
-library(Algo)
-
 ## Introduction : 
 
 As increasingly longer data sets are being collected, more and more applications require the detection of changes in the distributional properties of such data.
@@ -29,6 +22,12 @@ Typically the time series in finance, will contain several changepoints.
 There is therefore a growing need to be able to search for such changes efficiently. It
 is this search problem which we consider in this project 
 
+# Package installation
+You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
+
+devtools::install_github("tungle92/Project_Algorithms")
+
+library(Algo)
 
 ## Optimal Partitioning : 
 
