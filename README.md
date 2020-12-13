@@ -19,6 +19,7 @@
 You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
 
 devtools::install_github("tungle92/Project_Algorithms")
+
 library(Algo)
 
 ## Introduction : 
