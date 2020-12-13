@@ -66,3 +66,5 @@ IntegerVector PELT_rcpp(NumericVector x, double beta){
   }
   return(cps);
 }
+
+
