@@ -17,7 +17,7 @@
 
 ##Introduction : 
 
-The Ruptures Detection is a regression problem of Analysis Statisric, in an aim to identify when the distribution change, we make an estimation.   
+The Ruptures Detection is a regression problem of Analysis Statistic, in an aim to identify when the distribution change, we make an estimation.   
 
 # Project
 ruptures detection Algorithms
@@ -26,3 +26,11 @@ You first need to install the devtools package, it can be done easily from Rstud
 
 #devtools::install_github("tungle92/Project_Algorithms")
 library(Algo)
+
+## Optimal Partitioning : 
+
+Roughly speaking, it computes the cost of all subsequences of a given signal. The number of computed costs is of the order O(Kn2), where K is the number of change points and n the number of samples. This has to be multiplied by the computational cost of computing the approximation error on one sub-sequence. Consequently, piecewise constant models are significantly faster than linear or autoregressive models.
+
+## Pruned Exact Linear Times (PELT) : 
+
+Because the enumeration of all possible partitions impossible, the algorithm relies on a pruning rule. Many indexes are discarded, greatly reducing the computational cost while retaining the ability to find the optimal segmentation. The implementation follows [BKFE12]. In addition, under certain conditions on the change point repartition, the computational complexity is linear on average.
