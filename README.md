@@ -7,7 +7,7 @@
 #### Data Science, Evry Paris-Saclay University
 
 ### December 12, 2020
-> [Quick Start](#qs)
+> [Introduction](#qs)
 
 > [The 2 algorithms at fixed data length](#com)
 
