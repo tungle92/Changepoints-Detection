@@ -37,69 +37,10 @@ library(Algo)
 
 Roughly speaking, it computes the cost of all subsequences of a given signal. The number of computed costs is of the order O(Kn2), where K is the number of change points and n the number of samples. This has to be multiplied by the computational cost of computing the approximation error on one sub-sequence. Consequently, piecewise constant models are significantly faster than linear or autoregressive models.
 
-### OP Implementation
-
-```{r}
-OP <- function(x, beta = 0.1){
-  n = length(x)
-  cp = vector(mode="list")
-  cp[[1]] = 0
-  F_cost = rep(-beta, n+1)
-  for (i in 2:(n+1)){
-    min = Inf
-    point = NULL
-    for (j in 1:(i-1)){
-      if ((F_cost[j] + cost(x[j:(i-1)]) + beta) < min) {
-        min = F_cost[j] + cost(x[j:(i-1)]) + beta
-        point = j-1 
-      }
-    }
-    F_cost[i] = min
-    cp[[i]] = append(cp[[j]], point)
-  }
-  cps = unique(cp[[n+1]])
-  return(cps[-1])
-}
-```
-
 ## Pruned Exact Linear Times (PELT) : 
 
 Because the enumeration of all possible partitions impossible, the algorithm relies on a pruning rule. Many indexes are discarded, greatly reducing the computational cost while retaining the ability to find the optimal segmentation. In addition, under certain conditions on the change point repartition, the computational complexity is linear on average.
 
-### PELT Implementation
-
-```{r}
-PELT <- function(x, beta = 0.1){
-  n = length(x)
-  cp = vector(mode="list")
-  cp[[1]] = 0
-  R = vector(mode="list")
-  R[[1]] = 0
-  F_cost = rep(-beta, n+1)
-  for (i in 2:(n+1)){
-    Fcompare = rep(0, i-1)
-    min = Inf
-    point = NULL
-    for (j in R[[i-1]]){
-      Fcompare[j+1] = F_cost[j+1] + cost(x[(j+1):(i-1)])
-      if ((Fcompare[j+1] + beta) <= min) {
-        min = Fcompare[j+1] + beta
-        point = j 
-      }
-    }
-    F_cost[i] = min
-    cp[[i]] = unique(append(cp[[point+1]], point))
-    R[[i]] = c(i-1)
-    for ( k in R[[i-1]]){
-      if (Fcompare[k+1] <= min) {
-        R[[i]] = append(R[[i]], k)
-      }
-    }
-  }
-  cps = unique(cp[[n+1]])
-  return(cps[-1])
-}
-```
 
 ### A first simple test :
 
@@ -157,7 +98,7 @@ one.simu <- function(n, type = "sample", algo)
 one.simu(100, algo = 'PELT')
 ```
 
-## II
+## II OP Time complexity graph :
 
 ```{r}
 nbSimus <- 10
@@ -179,7 +120,8 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 ![](README_files/graph1.PNG)
 
 
-## III
+## PELT Time complexity graph : 
+
 ```{r}
 nbSimus <- 10
 vector_n <- seq(from = 100, to = 1000, length.out = nbSimus)
