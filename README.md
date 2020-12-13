@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/Dscientist20/Project.svg?branch=main)](https://travis-ci.com/Dscientist20/Project)
 # Project_Algorithms
-# Topic : Ruptures detection Algorithms
+## Topic : Ruptures detection Algorithms
 
 ### Group 8
 
