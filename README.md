@@ -16,6 +16,7 @@
 <a id="qs"></a>
 
 ##Introduction : 
+
 The Ruptures Detection is a regression problem of Analysis Statisric, in an aim to identify when the distribution change, we make an estimation.   
 
 # Project
