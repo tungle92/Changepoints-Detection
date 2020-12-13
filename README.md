@@ -118,14 +118,15 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 ## III
 ```{r}
 nbSimus <- 10
-vector_n <- seq(from = 50, to = 500, length.out = nbSimus)
-nbRep <- 20
+vector_n <- seq(from = 100, to = 1000, length.out = nbSimus)
+nbRep <- 2
 res_cp <- data.frame(matrix(0, nbSimus, nbRep + 1))
 colnames(res_cp) <- c("n", paste0("Rep",1:nbRep))
+
 j <- 1
 for(i in vector_n)
 {
-  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, algo = "PELT")))  
+  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, algo = 'PELT')))  
   j <- j + 1
 }
 
