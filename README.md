@@ -9,7 +9,7 @@
 ### December 12, 2020
 > [Introduction](#qs)
 
-> [The 2 algorithms at fixed data length](#com)
+> [The 2 algorithms](#com)
 
 > [Time complexity Comparaison](#time)
 
@@ -33,11 +33,15 @@ devtools::install_github("tungle92/Project_Algorithms")
 
 library(Algo)
 
-## Optimal Partitioning (OP): 
+<a id="com"></a>
+
+## The 2 algorithms
+
+### Optimal Partitioning (OP): 
 
 Roughly speaking, it computes the cost of all subsequences of a given signal. The number of computed costs is of the order O(Kn2), where K is the number of change points and n the number of samples. This has to be multiplied by the computational cost of computing the approximation error on one sub-sequence. Consequently, piecewise constant models are significantly faster than linear or autoregressive models.
 
-## Pruned Exact Linear Times (PELT) : 
+### Pruned Exact Linear Times (PELT) : 
 
 Because the enumeration of all possible partitions impossible, the algorithm relies on a pruning rule. Many indexes are discarded, greatly reducing the computational cost while retaining the ability to find the optimal segmentation. In addition, under certain conditions on the change point repartition, the computational complexity is linear on average.
 
