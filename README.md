@@ -17,7 +17,10 @@
 
 ##Introduction : 
 
-The Ruptures Detection is a regression problem of Analysis Statistic, in an aim to identify when the distribution change, we make an estimation.   
+As increasingly longer data sets are being collected, more and more applications require the detection of changes in the distributional properties of such data.
+Typically the time series in finance, will contain several changepoints.
+There is therefore a growing need to be able to search for such changes efficiently. It
+is this search problem which we consider in this project 
 
 # Project
 ruptures detection Algorithms
@@ -33,4 +36,4 @@ Roughly speaking, it computes the cost of all subsequences of a given signal. Th
 
 ## Pruned Exact Linear Times (PELT) : 
 
-Because the enumeration of all possible partitions impossible, the algorithm relies on a pruning rule. Many indexes are discarded, greatly reducing the computational cost while retaining the ability to find the optimal segmentation. The implementation follows [BKFE12]. In addition, under certain conditions on the change point repartition, the computational complexity is linear on average.
+Because the enumeration of all possible partitions impossible, the algorithm relies on a pruning rule. Many indexes are discarded, greatly reducing the computational cost while retaining the ability to find the optimal segmentation. In addition, under certain conditions on the change point repartition, the computational complexity is linear on average.
