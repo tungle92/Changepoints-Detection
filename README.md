@@ -23,8 +23,11 @@ There is therefore a growing need to be able to search for such changes efficien
 is this search problem which we consider in this project.
 
 Details on the Ruptures detection can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Détection_de_ruptures). This gif provides a graphical representation of its mechanisms.
-
+# Exemple de signal ayant des changements dans la moyenne.
 ![](README_files/D_moyenne.PNG)
+
+# Exemple de signal ayant des changements dans la distribution.
+![](README_files/D_distribution.PNG)
 
 # Package installation
 You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
