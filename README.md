@@ -15,7 +15,7 @@
 
 <a id="qs"></a>
 
-## Introduction : 
+# Introduction : 
 
 As increasingly longer data sets are being collected, more and more applications require the detection of changes in the distributional properties of such data.
 Typically the time series in finance, will contain several changepoints.
@@ -23,10 +23,10 @@ There is therefore a growing need to be able to search for such changes efficien
 is this search problem which we consider in this project.
 
 Details on the Ruptures detection can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Détection_de_ruptures). This gif provides a graphical representation of its mechanisms.
-# Exemple de signal ayant des changements dans la moyenne.
+## Exemple de signal ayant des changements dans la moyenne.
 ![](README_files/D_moyenne.PNG)
 
-# Exemple de signal ayant des changements dans la distribution.
+## Exemple de signal ayant des changements dans la distribution.
 ![](README_files/D_distribution.PNG)
 
 # Package installation
