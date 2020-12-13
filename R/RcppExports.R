@@ -9,3 +9,7 @@ optimal_partitioning_rcpp <- function(x, beta) {
     .Call(`_Algo_optimal_partitioning_rcpp`, x, beta)
 }
 
+PELT_rcpp <- function(x, beta) {
+    .Call(`_Algo_PELT_rcpp`, x, beta)
+}
+
