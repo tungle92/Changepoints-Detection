@@ -25,7 +25,7 @@ There is therefore a growing need to be able to search for such changes efficien
 is this search problem which we consider in this project.
 
 Details on the Ruptures detection can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Détection_de_ruptures). This image provides a graphical representation of its mechanisms.
-## Exemple de signal ayant des changements dans la moyenne.
+### Exemple de signal ayant des changements dans la moyenne.
 
 ![](README_files/D_moyenne.PNG)
 
@@ -40,7 +40,7 @@ library(Algo)
 
 <a id="com"></a>
 
-## The 2 algorithms
+# The 2 algorithms
 
 ### Optimal Partitioning (OP): 
 
@@ -89,7 +89,7 @@ We found this graphs when OP and PELT are exécute on `x` and `beta` values
 
 <a id="time"></a>
 
-##  Time complexity Comparaison :
+# Time complexity Comparaison :
 
 ```{r}
 one.simu <- function(n, type = "sample", algo)
