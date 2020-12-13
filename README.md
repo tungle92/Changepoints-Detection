@@ -15,7 +15,7 @@
 
 <a id="qs"></a>
 
-##Introduction : 
+## Introduction : 
 
 As increasingly longer data sets are being collected, more and more applications require the detection of changes in the distributional properties of such data.
 Typically the time series in finance, will contain several changepoints.
