@@ -91,6 +91,7 @@ We found this graphs when OP and PELT are exécute on `x` and `beta` values
 
 # Time complexity Comparaison :
 
+### a) Ones simulation function :
 ```{r}
 one.simu <- function(n, type = "sample", algo)
 {
@@ -109,7 +110,7 @@ one.simu <- function(n, type = "sample", algo)
 one.simu(100, algo = 'PELT')
 ```
 
-## a) OP Time complexity graph :
+### b) OP Time complexity graph :
 
 ```{r}
 nbSimus <- 10
@@ -131,7 +132,7 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 ![](README_files/graph1.PNG)
 
 
-## b) PELT Time complexity graph : 
+### c) PELT Time complexity graph : 
 
 ```{r}
 nbSimus <- 10
