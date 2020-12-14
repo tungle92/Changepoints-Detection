@@ -14,6 +14,8 @@
 
 > [Time complexity Comparaison](#time)
 
+> [References](#ref)
+
 <a id="qs"></a>
 
 # Introduction : 
@@ -187,3 +189,6 @@ time1/time2
 time3/time4
 ```
 [1] 418.5385
+
+<a id="ref"></a>
+Killick, R., Fearnhead, P. and Eckley, I.A., *Optimal detection of changepoints with a linear computational cost*
