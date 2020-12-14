@@ -2,7 +2,7 @@ cost <- function(x){
   return(sum((x-mean(x))^2))
 }
 
-optimal_partitioning <- function(x, beta = 0.1){
+OP <- function(x, beta = 0.1){
   n = length(x)
   cp = rep(0, n)
   F_cost = rep(-beta, n+1)
