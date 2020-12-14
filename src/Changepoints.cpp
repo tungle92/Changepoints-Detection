@@ -26,10 +26,10 @@ IntegerVector OP_rcpp(NumericVector x, double beta){
       Fcompare[j] = Fcost[j] + cost_rcpp(x[Range(j, i-1)]) + beta;
       if (Fcompare[j] <= min) {
         min = Fcompare[j];
-        cp[i-1] = j ;
+        cp[i-1] = j;
       }
-      Fcost[i] = min;
     }
+    Fcost[i] = min;
   }
   IntegerVector cps;
   while (cp[n-1]>0){
@@ -51,14 +51,20 @@ IntegerVector PELT_rcpp(NumericVector x, double beta){
     NumericVector Fcompare (i);
     double min = std::numeric_limits<double>::infinity();
     for (int j = 0; j < nR; j++){
-      Fcompare[R[j]] = Fcost[j] + cost_rcpp(x[Range(R[j], i-1)]);
+      Fcompare[R[j]] = Fcost[R[j]] + cost_rcpp(x[Range(R[j], i-1)]);
       if (Fcompare[R[j]] + beta <= min) {
         min = Fcompare[R[j]] + beta;
-        cp[i-1] = j ;
+        cp[i-1] = R[j];
       }
-      Fcost[i] = min;
     }
-    R.push_back(i);
+    Fcost[i] = min;
+    IntegerVector Rnew (1,i);
+    for (int k = 0; k < nR; k++){
+      if (Fcompare[R[k]] <= Fcost[i]) {
+        Rnew.push_back(R[k]);
+      }
+    }
+    R = Rnew;
   }
   IntegerVector cps;
   while (cp[n-1]>0){
