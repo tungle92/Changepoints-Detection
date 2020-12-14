@@ -123,7 +123,7 @@ colnames(res_cp) <- c("n", paste0("Rep",1:nbRep))
 j <- 1
 for(i in vector_n)
 {
-  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, algo = 'op')))  
+  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, func = 'op')))  
   j <- j + 1
 }
 
@@ -145,7 +145,7 @@ colnames(res_cp) <- c("n", paste0("Rep",1:nbRep))
 j <- 1
 for(i in vector_n)
 {
-  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, algo = 'PELT')))  
+  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, func = 'PELT')))  
   j <- j + 1
 }
 
@@ -170,8 +170,19 @@ Rcpp is faster than R
 ```{r}
 time1/time3
 ```
-[1] 4.360835
+[1] 4.476015
 ```{r}
 time2/time4
 ```
-[1] 31.33333
+[1] 40.26923
+
+PELT is faster than OP
+```{r}
+time1/time2
+```
+[1] 46.52149
+
+```{r}
+time3/time4
+```
+[1] 418.5385
