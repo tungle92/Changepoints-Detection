@@ -99,11 +99,11 @@ one.simu <- function(n, type = "sample", algo)
   if(type == "sample"){v <- sample(m)}else{v <- m:1}
   w = sample(m)
   x=rep(v,w*n/sum(w))+runif(length(rep(v,w*n/sum(w))))
-  if (algo == 'op'){
-    t <- system.time(OP(x, 0.1))[[1]]
+  if (algo == 'OP'){
+    t <- system.time(OP(x, 1))[[1]]
   }
   else if (algo == 'PELT'){
-    t <- system.time(PELT(x, 0.1))[[1]]
+    t <- system.time(PELT(x, 1))[[1]]
   }
   return(t)
 }
@@ -111,12 +111,12 @@ one.simu <- function(n, type = "sample", algo)
 ```{r}
 one.simu(100, algo = 'OP')
 ```
-  ## 
+  ## [1] 0.12
 
 ```{r}
 one.simu(100, algo = 'PELT')
 ```
-  ## 
+  ## [1] 0.02
 
 
 ### b) OP Time complexity graph :
