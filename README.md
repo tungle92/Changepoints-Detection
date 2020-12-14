@@ -92,28 +92,25 @@ We found this graphs when OP and PELT are exécute on `x` and `beta` values
 
 ### a) Ones simulation function :
 ```{r}
-one.simu <- function(n, type = "sample", algo)
+one.simu <- function(n, type = "sample", func = "OP", beta = 1)
 {
   m = sample(n/10)
   if(type == "sample"){v <- sample(m)}else{v <- m:1}
   w = sample(m)
   x=rep(v,w*n/sum(w))+runif(length(rep(v,w*n/sum(w))))
-  if (algo == 'OP'){
-    t <- system.time(OP(x, 1))[[1]]
-  }
-  else if (algo == 'PELT'){
-    t <- system.time(PELT(x, 1))[[1]]
-  }
+  f=get(func)
+  t <- system.time(f(x, beta))[[1]]
   return(t)
 }
+one.simu(100, func = 'OP', beta =1)
 ```
 ```{r}
-one.simu(100, algo = 'OP')
+one.simu(100, func = 'OP')
 ```
   ##### [1] 0.12
 
 ```{r}
-one.simu(100, algo = 'PELT')
+one.simu(100, func = 'PELT')
 ```
   ##### [1] 0.02
 
