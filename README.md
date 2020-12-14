@@ -111,12 +111,12 @@ one.simu <- function(n, type = "sample", algo)
 ```{r}
 one.simu(100, algo = 'OP')
 ```
-  ## [1] 0.12
+  ##### [1] 0.12
 
 ```{r}
 one.simu(100, algo = 'PELT')
 ```
-  ## [1] 0.02
+  ##### [1] 0.02
 
 
 ### b) OP Time complexity graph :
