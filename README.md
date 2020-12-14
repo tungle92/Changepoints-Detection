@@ -22,10 +22,6 @@
 
 The `Changepoint` is a R package developed for the detection of changepoints as a project of the **algorithmic M2 courses in Data Science master's program at Evry Paris-Saclay University**. This package includes two algorithms: **Optimal Partitioning (OP)** and **Pruned Exact Linear Times (PELT)** implemented in R and Rcpp.
 
-As increasingly longer data sets are being collected, more and more applications require the detection of changes in the distributional properties of such data.
-Typically the time series in finance, will contain several changepoints.
-There is therefore a growing need to be able to search for such changes efficiently. It is this search problem which we consider in this project.
-
 Details on the detection of changepoints can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Détection_de_ruptures). This image provides a graphical representation of its mechanisms.
 ### Example of changes in mean.
 
@@ -192,4 +188,4 @@ time3/time4
 
 <a id="ref"></a>
 # References
-Killick, R., Fearnhead, P. and Eckley, I.A., *Optimal detection of changepoints with a linear computational cost*
+Killick, R., Fearnhead, P. and Eckley, I.A., *Optimal detection of changepoints with a linear computational cost*. Journal of the American Statistical Association, 107(500), 1590-1598.
