@@ -16,15 +16,15 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// optimal_partitioning_rcpp
-IntegerVector optimal_partitioning_rcpp(NumericVector x, double beta);
-RcppExport SEXP _Algo_optimal_partitioning_rcpp(SEXP xSEXP, SEXP betaSEXP) {
+// OP_rcpp
+IntegerVector OP_rcpp(NumericVector x, double beta);
+RcppExport SEXP _Algo_OP_rcpp(SEXP xSEXP, SEXP betaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
     Rcpp::traits::input_parameter< double >::type beta(betaSEXP);
-    rcpp_result_gen = Rcpp::wrap(optimal_partitioning_rcpp(x, beta));
+    rcpp_result_gen = Rcpp::wrap(OP_rcpp(x, beta));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -43,7 +43,7 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_Algo_cost_rcpp", (DL_FUNC) &_Algo_cost_rcpp, 1},
-    {"_Algo_optimal_partitioning_rcpp", (DL_FUNC) &_Algo_optimal_partitioning_rcpp, 2},
+    {"_Algo_OP_rcpp", (DL_FUNC) &_Algo_OP_rcpp, 2},
     {"_Algo_PELT_rcpp", (DL_FUNC) &_Algo_PELT_rcpp, 2},
     {NULL, NULL, 0}
 };
