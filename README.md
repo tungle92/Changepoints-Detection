@@ -123,7 +123,7 @@ colnames(res_cp) <- c("n", paste0("Rep",1:nbRep))
 j <- 1
 for(i in vector_n)
 {
-  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, algo = 'op')))  
+  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, func = 'OP')))  
   j <- j + 1
 }
 
@@ -145,7 +145,7 @@ colnames(res_cp) <- c("n", paste0("Rep",1:nbRep))
 j <- 1
 for(i in vector_n)
 {
-  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, algo = 'PELT')))  
+  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, func = 'PELT')))  
   j <- j + 1
 }
 
@@ -154,3 +154,35 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 ```
 
 ![](README_files/graph2.PNG)
+
+### Some comparisons :
+```{r}
+nbSimus <- 100
+n <- 1000
+time1 <- 0; time2 <- 0; time3 <- 0; time4 <- 0
+
+for(i in 1:nbSimus){time1 <- time1 + one.simu(n, func = "OP")}
+for(i in 1:nbSimus){time2 <- time2 + one.simu(n, func = "PELT")}
+for(i in 1:nbSimus){time3 <- time3 + one.simu(n, func = "OP_rcpp")}
+for(i in 1:nbSimus){time4 <- time4 + one.simu(n, func = "PELT_rcpp")}
+```
+Rcpp is faster than R
+```{r}
+time1/time3
+```
+[1] 4.476015
+```{r}
+time2/time4
+```
+[1] 40.26923
+
+PELT is faster than OP
+```{r}
+time1/time2
+```
+[1] 46.52149
+
+```{r}
+time3/time4
+```
+[1] 418.5385
