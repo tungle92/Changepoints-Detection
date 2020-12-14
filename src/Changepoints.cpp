@@ -6,13 +6,12 @@ using namespace Rcpp; //to use the NumericVector object
 // [[Rcpp::export]]
 double cost_rcpp(NumericVector x){
   double m = mean(x);
-  float c = 0;
+  double c = 0;
   for(int i=0; i<x.size(); ++i){
     c += pow(x[i]-m,2);
   }
   return c;
 }
-
 
 
 // [[Rcpp::export]]
@@ -39,6 +38,7 @@ IntegerVector optimal_partitioning_rcpp(NumericVector x, double beta){
   }
   return(cps);
 }
+
   
 // [[Rcpp::export]]
 IntegerVector PELT_rcpp(NumericVector x, double beta){
