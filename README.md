@@ -154,3 +154,24 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 ```
 
 ![](README_files/graph2.PNG)
+
+### Some comparisons :
+```{r}
+nbSimus <- 100
+n <- 1000
+time1 <- 0; time2 <- 0; time3 <- 0; time4 <- 0
+
+for(i in 1:nbSimus){time1 <- time1 + one.simu(n, func = "OP")}
+for(i in 1:nbSimus){time2 <- time2 + one.simu(n, func = "PELT")}
+for(i in 1:nbSimus){time3 <- time3 + one.simu(n, func = "OP_rcpp")}
+for(i in 1:nbSimus){time4 <- time4 + one.simu(n, func = "PELT_rcpp")}
+```
+Rcpp is faster than R
+```{r}
+time1/time3
+```
+[1] 4.360835
+```{r}
+time2/time4
+```
+[1] 31.33333
