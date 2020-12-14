@@ -53,27 +53,23 @@ Because the enumeration of all possible partitions impossible, the algorithm rel
 ### A first simple test :
 
 We take x as simple vector,and the penalitie parameter equal 0.1.
-
-``` r
-x=c(1,1,2,2,3,3,4,4,5,5)
-beta = 0.1
-
-```
-
-
 We've implemeted 2 algorithms :
 
 -   `OP`
 -   `PELT`
 
-They all have two arguments: the initial seris vector data `x` and `beta`.
+They all have two arguments: the initial vector data `x` and `beta`.
 
 ```{r}
 graph_cp <- function(x, cps){
   plot(x)
   abline(v=cps+0.1, col='red')
 }
-x=c(1,1,2,2,3,3,4,4,5,5)
+n=100
+m = sample(n/10)
+v <- sample(m)
+w = sample(m)
+x = rep(v,w*n/sum(w))+runif(length(rep(v,w*n/sum(w))))
 
 cps = OP(x, beta = 0.1)
 cps1 = PELT(x, beta = 0.1)
