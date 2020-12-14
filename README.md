@@ -191,4 +191,5 @@ time3/time4
 [1] 418.5385
 
 <a id="ref"></a>
+# References
 Killick, R., Fearnhead, P. and Eckley, I.A., *Optimal detection of changepoints with a linear computational cost*
