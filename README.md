@@ -18,13 +18,14 @@
 
 # Introduction : 
 
+The `Changepoint` is a R package developed for the detection of changepoints as a project of the **algorithmic M2 courses in Data Science master's program at Evry Paris-Saclay University**. This package includes two algorithms: **Optimal Partitioning (OP)** and **Pruned Exact Linear Times (PELT)** implemented in R and Rcpp.
+
 As increasingly longer data sets are being collected, more and more applications require the detection of changes in the distributional properties of such data.
 Typically the time series in finance, will contain several changepoints.
-There is therefore a growing need to be able to search for such changes efficiently. It
-is this search problem which we consider in this project.
+There is therefore a growing need to be able to search for such changes efficiently. It is this search problem which we consider in this project.
 
-Details on the Ruptures detection can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Détection_de_ruptures). This image provides a graphical representation of its mechanisms.
-### Exemple de signal ayant des changements dans la moyenne.
+Details on the detection of changepoints can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Détection_de_ruptures). This image provides a graphical representation of its mechanisms.
+### Example of changes in mean.
 
 ![](README_files/D_moyenne.PNG)
 
@@ -35,7 +36,7 @@ You first need to install the devtools package, it can be done easily from Rstud
 
 devtools::install_github("tungle92/Project_Algorithms")
 
-library(Algo)
+library(Changepoints)
 
 <a id="com"></a>
 
@@ -43,16 +44,16 @@ library(Algo)
 
 ### Optimal Partitioning (OP) : 
 
-Roughly speaking, it computes the cost of all subsequences of a given signal. The number of computed costs is of the order O(Kn2), where K is the number of change points and n the number of samples. This has to be multiplied by the computational cost of computing the approximation error on one sub-sequence. Consequently, piecewise constant models are significantly faster than linear or autoregressive models.
+This algorithm computes the cost of all subsequences of a given data. The number of computed costs is of the order O(n2). This has to be multiplied by the computational cost of computing the approximation error on one sub-sequence.
 
 ### Pruned Exact Linear Times (PELT) : 
 
-Because the enumeration of all possible partitions impossible, the algorithm relies on a pruning rule. Many indexes are discarded, greatly reducing the computational cost while retaining the ability to find the optimal segmentation. In addition, under certain conditions on the change point repartition, the computational complexity is linear on average.
+The algorithm relies on a pruning rule. Many indexes are discarded, greatly reducing the computational cost while retaining the ability to find the optimal segmentation. In addition, under certain conditions of the changepoint repartition,  on average, the computational complexity is linear.
 
 
 ### A first simple test :
 
-We take x as simple vector,and the penalitie parameter equal 0.1.
+We take x as simple vector,and the penalty parameter `beta` equals 0.1.
 We've implemeted 2 algorithms :
 
 -   `OP`
@@ -78,15 +79,15 @@ graph_cp(x, cps)
 graph_cp(x, cps1)
 ```
  
-We found this graphs when OP and PELT are exécute on `x` and `beta` values 
+We obtain the following result given `x` and `beta` above
 
 ![](README_files/Firsexample.PNG)
 
 <a id="time"></a>
 
-# Time complexity Comparaison :
+# Time complexity Comparison :
 
-### a) Ones simulation function :
+### a) Simulation function :
 ```{r}
 one.simu <- function(n, type = "sample", func = "OP", beta = 1)
 {
@@ -111,7 +112,7 @@ one.simu(100, func = 'PELT')
   ##### [1] 0.02
 
 
-### b) OP Time complexity graph :
+### b) OP Time complexity graph:
 
 ```{r}
 nbSimus <- 10
@@ -133,7 +134,7 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 ![](README_files/graph1.PNG)
 
 
-### c) PELT Time complexity graph : 
+### c) PELT Time complexity graph: 
 
 ```{r}
 nbSimus <- 10
@@ -155,7 +156,7 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 
 ![](README_files/graph2.PNG)
 
-### Some comparisons :
+### Some comparisons:
 ```{r}
 nbSimus <- 100
 n <- 1000
