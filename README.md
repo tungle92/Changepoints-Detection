@@ -31,7 +31,7 @@ Details on the Ruptures detection can be found on [its wikipedia page](https://f
 
 <a id="pac"></a>
 
-# Package installation
+# Package installation :
 You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
 
 devtools::install_github("tungle92/Project_Algorithms")
@@ -107,8 +107,17 @@ one.simu <- function(n, type = "sample", algo)
   }
   return(t)
 }
+```
+```{r}
+one.simu(100, algo = 'OP')
+```
+  ## 
+
+```{r}
 one.simu(100, algo = 'PELT')
 ```
+  ## 
+
 
 ### b) OP Time complexity graph :
 
