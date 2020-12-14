@@ -2,14 +2,14 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 cost_rcpp <- function(x) {
-    .Call(`_Algo_cost_rcpp`, x)
+    .Call(`_Changepoints_cost_rcpp`, x)
 }
 
 OP_rcpp <- function(x, beta) {
-    .Call(`_Algo_OP_rcpp`, x, beta)
+    .Call(`_Changepoints_OP_rcpp`, x, beta)
 }
 
 PELT_rcpp <- function(x, beta) {
-    .Call(`_Algo_PELT_rcpp`, x, beta)
+    .Call(`_Changepoints_PELT_rcpp`, x, beta)
 }
 
