@@ -123,7 +123,7 @@ colnames(res_cp) <- c("n", paste0("Rep",1:nbRep))
 j <- 1
 for(i in vector_n)
 {
-  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, func = 'op')))  
+  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, func = 'OP')))  
   j <- j + 1
 }
 
