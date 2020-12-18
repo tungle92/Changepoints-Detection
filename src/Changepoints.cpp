@@ -4,18 +4,24 @@ using namespace Rcpp; //to use the NumericVector object
 #include<vector> //to use std::vector<double>
 
 // [[Rcpp::export]]
-double cost_rcpp(NumericVector x){
+double cost_rcpp(NumericVector x, String changetype){
+  int n = x.size();
   double m = mean(x);
-  double c = 0;
-  for(int i=0; i<x.size(); ++i){
-    c += pow(x[i]-m,2);
+  float c = 0;
+  for(int i=0; i<n; ++i){
+    c += pow(x[i]- m,2);
   }
-  return c;
+  if (changetype == "mean"){
+    return c;
+  }
+  if (changetype == "meanvar"){
+    return n*(log(c/n)+1);
+  }
 }
 
 
 // [[Rcpp::export]]
-IntegerVector OP_rcpp(NumericVector x, double beta){
+IntegerVector OP_rcpp(NumericVector x, double beta, String changetype){
   int n = x.size();
   IntegerVector cp (n);
   NumericVector Fcost (n+1, -beta);
@@ -23,7 +29,7 @@ IntegerVector OP_rcpp(NumericVector x, double beta){
     NumericVector Fcompare (i);
     double min = std::numeric_limits<double>::infinity();
     for (int j = 0; j < i; j++){
-      Fcompare[j] = Fcost[j] + cost_rcpp(x[Range(j, i-1)]) + beta;
+      Fcompare[j] = Fcost[j] + cost_rcpp(x[Range(j, i-1)], changetype) + beta;
       if (Fcompare[j] <= min) {
         min = Fcompare[j];
         cp[i-1] = j;
@@ -41,7 +47,7 @@ IntegerVector OP_rcpp(NumericVector x, double beta){
 
   
 // [[Rcpp::export]]
-IntegerVector PELT_rcpp(NumericVector x, double beta){
+IntegerVector PELT_rcpp(NumericVector x, double beta, String changetype){
   int n = x.size();
   IntegerVector cp (n);
   IntegerVector R (1);
@@ -51,7 +57,7 @@ IntegerVector PELT_rcpp(NumericVector x, double beta){
     NumericVector Fcompare (i);
     double min = std::numeric_limits<double>::infinity();
     for (int j = 0; j < nR; j++){
-      Fcompare[R[j]] = Fcost[R[j]] + cost_rcpp(x[Range(R[j], i-1)]);
+      Fcompare[R[j]] = Fcost[R[j]] + cost_rcpp(x[Range(R[j], i-1)], changetype);
       if (Fcompare[R[j]] + beta <= min) {
         min = Fcompare[R[j]] + beta;
         cp[i-1] = R[j];
