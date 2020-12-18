@@ -219,6 +219,15 @@ $cps
 [1] 12 12 12  9  8  7  6  5  4
 ![](README_files/CROPS.PNG)
 
+```{r}
+cps1 = PELT_rcpp(x, CROPS$beta[3], 'mean')
+n1=length(cps1$cps)
+cps2 = PELT_rcpp(x, CROPS$beta[4], 'mean')
+n2=length(cps2$cps)
+beta_int = (cps1$Q-cps2$Q-n1*CROPS$beta[3]+n2*CROPS$beta[4])/(n2-n1)
+beta_int ==  CROPS$beta[3]
+```
+[1] TRUE
 <a id="ref"></a>
 # References
 Killick, R., Fearnhead, P. and Eckley, I.A., *Optimal detection of changepoints with a linear computational cost*. Journal of the American Statistical Association, 107(500), 1590-1598.
