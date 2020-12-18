@@ -1,8 +1,14 @@
-cost <- function(x){
-  return(sum((x-mean(x))^2))
+cost <- function(x, changetype){
+  if (changetype=="mean") {
+    return(sum((x-mean(x))^2))
+  }
+  if (changetype=="meanvar"){
+    n = length(x)
+    return (n*(log(sum((x-mean(x))^2)/n)+1))
+  }
 }
 
-OP <- function(x, beta = 0.1){
+OP <- function(x, beta = 0.1, changetype){
   n = length(x)
   cp = rep(0, n)
   F_cost = rep(-beta, n+1)
@@ -11,7 +17,7 @@ OP <- function(x, beta = 0.1){
     min = Inf
     point = NULL
     for (j in 1:(i-1)){
-      Fcompare[j] = F_cost[j] + cost(x[j:(i-1)]) + beta
+      Fcompare[j] = F_cost[j] + cost(x[j:(i-1)],changetype) + beta
       if (Fcompare[j] <= min) {
         min = Fcompare[j]
         point = j-1 
@@ -40,7 +46,7 @@ PELT <- function(x, beta = 0.1){
     min = Inf
     point = NULL
     for (j in R){
-      Fcompare[j+1] = F_cost[j+1] + cost(x[(j+1):(i-1)])
+      Fcompare[j+1] = F_cost[j+1] + cost(x[(j+1):(i-1)], changetype)
       if ((Fcompare[j+1] + beta) <= min) {
         min = Fcompare[j+1] + beta
         point = j
