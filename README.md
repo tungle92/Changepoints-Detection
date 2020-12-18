@@ -14,6 +14,8 @@
 
 > [Time complexity Comparaison](#time)
 
+> [CROPS Algorithm](#CROPS)
+
 > [References](#ref)
 
 <a id="qs"></a>
@@ -186,6 +188,34 @@ time3/time4
 ```
 [1] 418.5385
 
+<a id="CROPS"></a>
+```{r}
+set.seed(1)
+n= 1000
+m = 10
+v <- sample(m)/2
+w = sample(m)
+x = rep(v,w*n/sum(w))
+u = rnorm(length(rep(v,w*n/sum(w))))/10
+x = x+ u
+```
+```{r}
+PELT_rcpp(x, 0.07, 'mean')
+```
+$cps
+ [1] 868 796 633 452 444 433 428 343 307 162  72  54
+
+$Q
+[1] 10.48209
+```{r}
+CROPS = CROPS(x, c(0.08,100), 'mean')
+CROPS
+```
+$beta
+[1]   0.08000  20.58937  41.87474  50.15897  56.06499 100.00000
+
+$cps #number of changepoints corresponding to beta
+[1] 9 8 7 6 5 4
 <a id="ref"></a>
 # References
 Killick, R., Fearnhead, P. and Eckley, I.A., *Optimal detection of changepoints with a linear computational cost*. Journal of the American Statistical Association, 107(500), 1590-1598.
