@@ -73,7 +73,7 @@ IntegerVector PELT_rcpp(NumericVector x, double beta, String changetype){
     R = Rnew;
   }
   IntegerVector cps;
-  while (cp[n-1]>0){
+  while (cp[n-1] > 0){
     cps.push_back(cp[n-1]);
     n = cp[n-1];
   }
