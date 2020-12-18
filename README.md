@@ -1,5 +1,5 @@
 # Project_Algorithms
-## Topic : Ruptures detection Algorithms
+## Topic : Changepoints detection Algorithms
 
 ### Group 8
 
