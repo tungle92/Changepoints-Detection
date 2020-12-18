@@ -209,7 +209,7 @@ $cps
 $Q
 [1] 10.48209
 ```{r}
-CROPS = CROPS(x, c(0.08,100), 'mean')
+CROPS = CROPS(x, c(0.07,100), 'mean')
 CROPS
 ```
 $beta
