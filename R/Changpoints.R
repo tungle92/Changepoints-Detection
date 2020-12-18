@@ -36,7 +36,7 @@ OP <- function(x, beta = 0.1, changetype){
 
 
 
-PELT <- function(x, beta = 0.1){
+PELT <- function(x, beta = 0.1, changetype){
   n = length(x)
   cp = rep(0, n)
   R = c(0)
@@ -67,5 +67,5 @@ PELT <- function(x, beta = 0.1){
     cps = append(cps, cp[n])
     n = cp[n]
   }
-  return(cps)
+  return(list(cps=cps, Q=tail(F_cost, 1)))
 }

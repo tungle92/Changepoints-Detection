@@ -31,7 +31,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // PELT_rcpp
-IntegerVector PELT_rcpp(NumericVector x, double beta, String changetype);
+List PELT_rcpp(NumericVector x, double beta, String changetype);
 RcppExport SEXP _Changepoints_PELT_rcpp(SEXP xSEXP, SEXP betaSEXP, SEXP changetypeSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
