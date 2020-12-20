@@ -189,6 +189,7 @@ time3/time4
 [1] 418.5385
 
 <a id="CROPS"></a>
+# CROPS Algorithm
 ```{r}
 set.seed(1)
 n= 1000
@@ -208,14 +209,25 @@ $cps
 $Q
 [1] 10.48209
 ```{r}
-CROPS = CROPS(x, c(0.08,100), 'mean')
+CROPS = CROPS(x, c(0.07,100), 'mean')
 CROPS
 ```
 $beta
-[1]   0.08000  20.58937  41.87474  50.15897  56.06499 100.00000
+[1]   0.0700000   0.0766513   0.0766513   1.8529799  26.2004565  39.4520287  50.5479331  61.6438375  100.0000000
 
-$cps #number of changepoints corresponding to beta
-[1] 9 8 7 6 5 4
+$cps
+[1] 12 12 12  9  8  7  6  5  4
+![](README_files/CROPS.PNG)
+
+```{r}
+cps1 = PELT_rcpp(x, CROPS$beta[3], 'mean')
+n1=length(cps1$cps)
+cps2 = PELT_rcpp(x, CROPS$beta[4], 'mean')
+n2=length(cps2$cps)
+beta_int = (cps1$Q-cps2$Q-n1*CROPS$beta[3]+n2*CROPS$beta[4])/(n2-n1)
+beta_int ==  CROPS$beta[3]
+```
+[1] TRUE
 <a id="ref"></a>
 # References
 Killick, R., Fearnhead, P. and Eckley, I.A., *Optimal detection of changepoints with a linear computational cost*. Journal of the American Statistical Association, 107(500), 1590-1598.
