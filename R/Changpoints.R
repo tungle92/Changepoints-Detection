@@ -31,7 +31,7 @@ OP <- function(x, beta = 0.1, changetype){
     cps = append(cps, cp[n])
     n = cp[n]
   }
-  return(cps)
+  return(list(cps=cps, Q=tail(F_cost, 1)))
 }
 
 

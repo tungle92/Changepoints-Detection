@@ -21,7 +21,7 @@ double cost_rcpp(NumericVector x, String changetype){
 
 
 // [[Rcpp::export]]
-IntegerVector OP_rcpp(NumericVector x, double beta, String changetype){
+List OP_rcpp(NumericVector x, double beta, String changetype){
   int n = x.size();
   IntegerVector cp (n);
   NumericVector Fcost (n+1, -beta);
@@ -42,7 +42,10 @@ IntegerVector OP_rcpp(NumericVector x, double beta, String changetype){
     cps.push_back(cp[n-1]);
     n = cp[n-1];
   }
-  return(cps);
+  List result;
+  result["cps"] = cps;
+  result["Q"] = tail(Fcost, n=1);
+  return(result);;
 }
 
   
