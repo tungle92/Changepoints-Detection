@@ -154,38 +154,28 @@ Coefficients:
   (Intercept)  log(vector_n)  
       -10.613          1.121
 ```
-### Some comparisons:
-```{r}
-nbSimus <- 100
-n <- 1000
-time1 <- 0; time2 <- 0; time3 <- 0; time4 <- 0
+When the number of changepoints increases at a slow rate:
 
-for(i in 1:nbSimus){time1 <- time1 + one.simu(n, func = "OP")}
-for(i in 1:nbSimus){time2 <- time2 + one.simu(n, func = "PELT")}
-for(i in 1:nbSimus){time3 <- time3 + one.simu(n, func = "OP_rcpp")}
-for(i in 1:nbSimus){time4 <- time4 + one.simu(n, func = "PELT_rcpp")}
+### Square root increasing changepoints (m = n^0.5/4)
+The cost of computation PELT is no longer linear.
+![](README_files/root.png)
 ```
-Rcpp is faster than R
-```{r}
-time1/time3
-```
-[1] 4.476015
-```{r}
-time2/time4
-```
-[1] 40.26923
+Call:
+lm(formula = log(res) ~ log(vector_n))
 
-PELT is faster than OP
-```{r}
-time1/time2
+Coefficients:
+  (Intercept)  log(vector_n)  
+       -16.06           1.60
 ```
-[1] 46.52149
-
-```{r}
-time3/time4
+![](README_files/fixed.png)
 ```
-[1] 418.5385
+Call:
+lm(formula = log(res) ~ log(vector_n))
 
+Coefficients:
+  (Intercept)  log(vector_n)  
+      -17.512          1.881
+```
 <a id="beta"></a>
 # Different beta
 Try with different number of observations n (1000, 5000, 10000, 50000), with a linearly increasing number of changepoints m=n/100 for the problem change in mean. We consider here three value of beta: sigma^2, 2*sigma^2*log(n) and sigma^2*log(n).* (sigma is obtained by Hall's variance estimation of order 3)
