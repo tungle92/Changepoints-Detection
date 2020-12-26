@@ -1,6 +1,6 @@
-\name{Algo-package}
-\alias{Algo-package}
-\alias{Algo}
+\name{Changepoints-package}
+\alias{Changepoints-package}
+\alias{Changepoints}
 \docType{package}
 \title{
   A short title line describing what the package does
