@@ -14,6 +14,8 @@
 
 > [Time complexity Comparaison](#time)
 
+> [Penalty value](#beta)
+
 > [CROPS Algorithm](#CROPS)
 
 > [References](#ref)
@@ -72,8 +74,8 @@ v <- sample(m)
 w = sample(m)
 x = rep(v,w*n/sum(w))+runif(length(rep(v,w*n/sum(w))))
 
-cps = OP(x, beta = 0.1)
-cps1 = PELT(x, beta = 0.1)
+cps = OP(x, beta = 0.1)$cps
+cps1 = PELT(x, beta = 0.1)$cps
 par(mfrow=c(1,2))
 graph_cp(x, cps)
 graph_cp(x, cps1)
@@ -87,44 +89,26 @@ We obtain the following result given `x` and `beta` above
 
 # Time complexity Comparison :
 
-### a) Simulation function :
+### a) Simulation function : at least 30 observations between changepoints
 ```{r}
-one.simu <- function(n, type = "sample", func = "OP", beta = 1)
-{
-  m = sample(n/10)
-  if(type == "sample"){v <- sample(m)}else{v <- m:1}
-  w = sample(m)
-  x=rep(v,w*n/sum(w))+runif(length(rep(v,w*n/sum(w))))
-  f=get(func)
-  t <- system.time(f(x, beta))[[1]]
-  return(t)
-}
-one.simu(100, func = 'OP', beta =1)
+mean.simu(n, m) #change in mean with n observations, m changepoints
+var.simu(n, m) #change in variance with n observations, m changepoints
 ```
-```{r}
-one.simu(100, func = 'OP')
-```
-  ##### [1] 0.12
-
-```{r}
-one.simu(100, func = 'PELT')
-```
-  ##### [1] 0.02
-
 
 ### b) OP Time complexity graph:
 
 ```{r}
+set.seed(1)
 nbSimus <- 10
 vector_n <- seq(from = 100, to = 1000, length.out = nbSimus)
-nbRep <- 2
+nbRep <- 10
 res_cp <- data.frame(matrix(0, nbSimus, nbRep + 1))
 colnames(res_cp) <- c("n", paste0("Rep",1:nbRep))
 
 j <- 1
 for(i in vector_n)
 {
-  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, func = 'OP')))  
+  res_cp[j,] <- c(i, replicate(nbRep, system.time(OP(mean.simu(i,i/100)$x, beta = 1, 'mean'))[[1]]))  
   j <- j + 1
 }
 
@@ -132,21 +116,28 @@ res <- rowMeans(res_cp[,-1])
 plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in seconds")
 ```
 ![](README_files/graph1.PNG)
+```
+Call:
+lm(formula = log(res) ~ log(vector_n))
 
-
+Coefficients:
+  (Intercept)  log(vector_n)  
+      -12.958          2.116  
+```
 ### c) PELT Time complexity graph: 
 
 ```{r}
+set.seed(1)
 nbSimus <- 10
-vector_n <- seq(from = 100, to = 1000, length.out = nbSimus)
-nbRep <- 2
+vector_n <- seq(from = 1000, to = 10000, length.out = nbSimus)
+nbRep <- 10
 res_cp <- data.frame(matrix(0, nbSimus, nbRep + 1))
 colnames(res_cp) <- c("n", paste0("Rep",1:nbRep))
 
 j <- 1
 for(i in vector_n)
 {
-  res_cp[j,] <- c(i, replicate(nbRep, one.simu(i, func = 'PELT')))  
+  res_cp[j,] <- c(i, replicate(nbRep, system.time(PELT_rcpp(mean.simu(i,i/100)$x, beta = 1, 'mean'))[[1]]))  
   j <- j + 1
 }
 
@@ -155,39 +146,50 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 ```
 
 ![](README_files/graph2.PNG)
-
-### Some comparisons:
-```{r}
-nbSimus <- 100
-n <- 1000
-time1 <- 0; time2 <- 0; time3 <- 0; time4 <- 0
-
-for(i in 1:nbSimus){time1 <- time1 + one.simu(n, func = "OP")}
-for(i in 1:nbSimus){time2 <- time2 + one.simu(n, func = "PELT")}
-for(i in 1:nbSimus){time3 <- time3 + one.simu(n, func = "OP_rcpp")}
-for(i in 1:nbSimus){time4 <- time4 + one.simu(n, func = "PELT_rcpp")}
 ```
-Rcpp is faster than R
-```{r}
-time1/time3
-```
-[1] 4.476015
-```{r}
-time2/time4
-```
-[1] 40.26923
+Call:
+lm(formula = log(res) ~ log(vector_n))
 
-PELT is faster than OP
-```{r}
-time1/time2
+Coefficients:
+  (Intercept)  log(vector_n)  
+      -10.613          1.121
 ```
-[1] 46.52149
+When the number of changepoints increases at a slow rate:
 
-```{r}
-time3/time4
+### Square root increasing number of changepoints (m = n^0.5/4)
+The cost of computation PELT is no longer linear.
+![](README_files/root.png)
 ```
-[1] 418.5385
+Call:
+lm(formula = log(res) ~ log(vector_n))
 
+Coefficients:
+  (Intercept)  log(vector_n)  
+       -16.06           1.60
+```
+### Fixed number of changepoints (m = 2)
+![](README_files/fixed.png)
+```
+Call:
+lm(formula = log(res) ~ log(vector_n))
+
+Coefficients:
+  (Intercept)  log(vector_n)  
+      -17.512          1.881
+```
+<a id="beta"></a>
+# Different beta
+Try with different number of observations n (1000, 5000, 10000, 50000), with a linearly increasing number of changepoints m=n/100 for the problem change in mean. We consider here three value of beta: sigma^2, 2*sigma^2*log(n) and sigma^2*log(n).* (sigma is obtained by Hall's variance estimation of order 3)
+
+Simulate 10 times for each n and calculate the ratio of number of true detections and false detections over number of real changepoints m.
+
+Beta = sigma^2 has the highest true detection ratio, but there are too many false detections (30 times the real number). 
+
+Beta = 2*sigma^2*log(n) can be considered the best among three beta's values above with the lowest false detection ratio and acceptable true detection ratio. 
+
+![](README_files/beta1.png)
+![](README_files/beta2.png)
+![](README_files/beta3.png)
 <a id="CROPS"></a>
 # CROPS Algorithm
 ```{r}
@@ -199,23 +201,15 @@ w = sample(m)
 x = rep(v,w*n/sum(w))
 u = rnorm(length(rep(v,w*n/sum(w))))/10
 x = x+ u
-```
-```{r}
-PELT_rcpp(x, 0.07, 'mean')
-```
-$cps
- [1] 868 796 633 452 444 433 428 343 307 162  72  54
 
-$Q
-[1] 10.48209
-```{r}
 CROPS = CROPS(x, c(0.07,100), 'mean')
 CROPS
 ```
 $beta
-[1]   0.0700000   0.0766513   0.0766513   1.8529799  26.2004565  39.4520287  50.5479331  61.6438375  100.0000000
+[1]   0.0700000   0.0766513   0.0766513   1.8529799  26.2004565  39.4520287  50.5479331
+[8]  61.6438375 100.0000000
 
-$cps
+$ncp
 [1] 12 12 12  9  8  7  6  5  4
 ![](README_files/CROPS.PNG)
 
