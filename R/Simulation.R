@@ -1,24 +1,18 @@
-
-# Time complexity simulation for change in mean:
-mean.simu <- function(n, m, type = "sample", func = "OP", beta = 1)
+# Simulation for change in mean:
+mean.simu <- function(n, m)
 {
   changetype = 'mean'
-  if(type == "sample"){v1 <- sample(m+1)}else{v <- (m+1):1}
   a = floor((n-30)/60)
   v = sample(1:a, m, replace = FALSE) - runif(m)/2
   cps = sort(round(v*60, 0))
   ngroup = diff(c(0,cps,n))
-  x=unlist(lapply(ngroup, function(x) rnorm(x,0,1)))/4+rep(v1,ngroup)
-  f=get(func)
-  tstart = Sys.time()
-  pred = f(x, beta, changetype='mean')$cps
-  t = difftime(tstart, Sys.time())[[1]]
-  return(list(t=t,cps=cps,predict=pred))
+  x=unlist(lapply(ngroup, function(x) rnorm(x,rnorm(1,0,2.5),1)))/4
+  return(list(x=x,cps=cps))
 }
 
 
-# Time complexity simulation for change in both mean and variance:
-var.simu <- function(n, m, func = "OP", beta = 1)
+# Simulation for change in both mean and variance:
+var.simu <- function(n, m)
 {
   changetype = 'meanvar'
   a = floor((n-30)/60)
@@ -26,9 +20,6 @@ var.simu <- function(n, m, func = "OP", beta = 1)
   cps = sort(round(v*60, 0))
   ngroup = diff(c(0,cps,n))
   x=unlist(lapply(ngroup, function(x) rnorm(x,0,rlnorm(1,0,log(10)/2))))
-  f=get(func)
-  tstart = Sys.time()
-  pred = f(x, beta, changetype='mean')$cps
-  t = difftime(tstart, Sys.time())[[1]]
-  return(list(t=t,cps=cps,predict=pred))
+  return(list(x=x,cps=cps))
 }
+
