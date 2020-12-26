@@ -60,10 +60,13 @@ PELT <- function(x, beta = 0.1, changetype){
     R_new = c(i-1)
     for (k in R){
       if (Fcompare[k+1] <= min) {
-        R_new = union(R_new, k)
+        R_new = c(R_new, k)
       }
     }
     R = R_new
+    if ((changetype == 'meanvar')&(i>2)){
+      R[1] = i-2
+      }
   }
   cps = vector(mode="numeric")
   while (cp[n]>0){

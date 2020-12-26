@@ -86,6 +86,9 @@ List PELT_rcpp(NumericVector x, double beta, String changetype){
       }
     }
     R = Rnew;
+    if ((changetype == "meanvar")&&(i>1)){
+      R[0]=i-1;
+      }
   }
   IntegerVector cps;
   while (cp[n-1]>0){
