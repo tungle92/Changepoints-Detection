@@ -10,8 +10,10 @@ mean.simu <- function(n, m, type = "sample", func = "OP", beta = 1)
   ngroup = diff(c(0,cps,n))
   x=unlist(lapply(ngroup, function(x) rnorm(x,0,1)))/4+rep(v1,ngroup)
   f=get(func)
-  t <- system.time(f(x, beta, changetype='mean'))[[1]]
-  return(t)
+  tstart = Sys.time()
+  pred = f(x, beta, changetype='mean')$cps
+  t = difftime(tstart, Sys.time())[[1]]
+  return(list(t=t,cps=cps,predict=pred))
 }
 
 
@@ -25,6 +27,8 @@ var.simu <- function(n, m, func = "OP", beta = 1)
   ngroup = diff(c(0,cps,n))
   x=unlist(lapply(ngroup, function(x) rnorm(x,0,rlnorm(1,0,log(10)/2))))
   f=get(func)
-  t <- system.time(f(x, beta, changetype='meanvar'))[[1]]
-  return(t)
+  tstart = Sys.time()
+  pred = f(x, beta, changetype='mean')$cps
+  t = difftime(tstart, Sys.time())[[1]]
+  return(list(t=t,cps=cps,predict=pred))
 }
