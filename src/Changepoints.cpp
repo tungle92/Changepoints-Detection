@@ -15,7 +15,10 @@ double cost_rcpp(NumericVector x, String changetype){
     return c;
   }
   if (changetype == "meanvar"){
-    return n*(log(c/n)+1);
+    if (n==1){
+      return std::numeric_limits<double>::infinity();
+    }
+    else {return n*(log(c/n)+1);}
   }
 }
 

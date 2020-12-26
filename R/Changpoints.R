@@ -4,7 +4,10 @@ cost <- function(x, changetype){
   }
   if (changetype=="meanvar"){
     n = length(x)
-    return (n*(log(sum((x-mean(x))^2)/n)+1))
+    if (n==1){
+      return(Inf)
+    }
+    else {return (n*(log(sum((x-mean(x))^2)/n)+1))}
   }
 }
 
