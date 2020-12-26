@@ -189,8 +189,11 @@ time3/time4
 <a id="beta"></a>
 # Different beta
 Try with different number of observations n (1000, 5000, 10000, 50000), with a linearly increasing number of changepoints m=n/100 for the problem change in mean. We consider here three value of beta: sigma^2, 2*sigma^2*log(n) and sigma^2*log(n).* (sigma is obtained by Hall's variance estimation of order 3)
+
 Simulate 10 times for each n and calculate the ratio of number of true detections and false detections over number of real changepoints m.
+
 Beta = sigma^2 has the highest true detection ratio, but there are too many false detections (30 times the real number). 
+
 Beta = 2*sigma^2*log(n) can be considered the best among three beta's values above with the lowest false detection ratio and acceptable true detection ratio. 
 
 ![](README_files/beta1.png)
