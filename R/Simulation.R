@@ -6,7 +6,7 @@ mean.simu <- function(n, m)
   v = sample(1:a, m, replace = FALSE) - runif(m)/2
   cps = sort(round(v*60, 0))
   ngroup = diff(c(0,cps,n))
-  x=unlist(lapply(ngroup, function(x) rnorm(x,rnorm(1,0,2.5),1)))/4
+  x=unlist(lapply(ngroup, function(x) rnorm(x,rnorm(1,0,2.5),1)))
   return(list(x=x,cps=cps))
 }
 
