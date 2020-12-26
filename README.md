@@ -156,7 +156,7 @@ Coefficients:
 ```
 When the number of changepoints increases at a slow rate:
 
-### Square root increasing changepoints (m = n^0.5/4)
+### Square root increasing number of changepoints (m = n^0.5/4)
 The cost of computation PELT is no longer linear.
 ![](README_files/root.png)
 ```
@@ -167,6 +167,7 @@ Coefficients:
   (Intercept)  log(vector_n)  
        -16.06           1.60
 ```
+### Fixed number of changepoints (m = 2)
 ![](README_files/fixed.png)
 ```
 Call:
