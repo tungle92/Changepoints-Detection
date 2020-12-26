@@ -116,13 +116,14 @@ res <- rowMeans(res_cp[,-1])
 plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in seconds")
 ```
 ![](README_files/graph1.PNG)
+```
 Call:
 lm(formula = log(res) ~ log(vector_n))
 
 Coefficients:
   (Intercept)  log(vector_n)  
       -12.958          2.116  
-
+```
 ### c) PELT Time complexity graph: 
 
 ```{r}
@@ -145,12 +146,14 @@ plot(vector_n, res, type = 'b', xlab = "data length", ylab = "mean time in secon
 ```
 
 ![](README_files/graph2.PNG)
+```
 Call:
 lm(formula = log(res) ~ log(vector_n))
 
 Coefficients:
   (Intercept)  log(vector_n)  
       -10.613          1.121
+```
 ### Some comparisons:
 ```{r}
 nbSimus <- 100
@@ -188,9 +191,9 @@ time3/time4
 Try with different number of observations n (1000, 5000, 10000, 50000), with a linearly increasing number of changepoints m=n/100 for the problem change in mean. We consider here three value of beta: sigma^2, 2*sigma^2*log(n) and sigma^2*log(n).*
 Simulate 10 times for each n and calculate the ratio of number of true detections and false detections over number of real changepoints m.
 
-![](README_files/beta1.PNG)
-![](README_files/beta2.PNG)
-![](README_files/beta3.PNG)
+![](README_files/beta1.png)
+![](README_files/beta2.png)
+![](README_files/beta3.png)
 <a id="CROPS"></a>
 # CROPS Algorithm
 ```{r}
