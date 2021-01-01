@@ -36,9 +36,9 @@ Details on the detection of changepoints can be found on [its wikipedia page](ht
 # Package installation :
 You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
 
-devtools::install_github("tungle92/Project_Algorithms")
+**devtools::install_github("tungle92/Project_Algorithms")**
 
-library(Changepoints)
+**library(Changepoints)**
 
 <a id="com"></a>
 
