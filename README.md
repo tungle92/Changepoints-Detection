@@ -27,11 +27,12 @@
 The `Changepoint` is a R package developed for the detection of changepoints as a project of the **algorithmic M2 courses in Data Science master's program at Evry Paris-Saclay University**. This package includes two algorithms: **Optimal Partitioning (OP)** and **Pruned Exact Linear Times (PELT)** implemented in R and Rcpp.
 
 Details on the detection of changepoints can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Détection_de_ruptures). This image provides a graphical representation of its mechanisms.
-### Example of changes in mean.
+### Example of changes in Mean.
 
 ![](README_files/D_moyenne.PNG)
 
 <a id="pac"></a>
+### Example of Changes in Auto-covariance within AR.
 
 # Package installation :
 You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
