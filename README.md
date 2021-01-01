@@ -34,6 +34,7 @@ Details on the detection of changepoints can be found on [its wikipedia page](ht
 <a id="pac"></a>
 ### Example of Changes in Auto-covariance within AR.
 
+![](README_files/auto_cov.PNG)
 # Package installation :
 You first need to install the devtools package, it can be done easily from Rstudio. We install the package from Github :
 
