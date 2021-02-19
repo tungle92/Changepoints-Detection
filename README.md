@@ -1,9 +1,6 @@
 # Project_Algorithms
 ## Topic : Changepoints detection Algorithms
 
-### Group 8
-
-#### Data Science, Evry Paris-Saclay University
 
 ##### December 12, 2020
 > [Introduction](#qs)
