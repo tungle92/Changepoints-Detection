@@ -21,7 +21,7 @@
 
 # Introduction : 
 
-The `Changepoint` is a R package developed for the detection of changepoints as a project of the **algorithmic M2 courses in Data Science master's program at Evry Paris-Saclay University**. This package includes two algorithms: **Optimal Partitioning (OP)** and **Pruned Exact Linear Times (PELT)** implemented in R and Rcpp.
+The `Changepoint` is a R package developed for the detection of changepoints. This package includes two algorithms: **Optimal Partitioning (OP)** and **Pruned Exact Linear Times (PELT)** implemented in R and Rcpp. This package also contain the function for simulation and the function to performe CROPS algorithm.  
 
 Details on the detection of changepoints can be found on [its wikipedia page](https://fr.wikipedia.org/wiki/Détection_de_ruptures). This image provides a graphical representation of its mechanisms.
 ### Example of changes in Mean.
